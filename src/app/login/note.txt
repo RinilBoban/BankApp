@@ -18,3 +18,15 @@ There are many methods in Data Binding
     1.2.1 Event Binding             (event_name)="method_name()"
     1.2.2 $event binding            (event_name)="method_name($event)"
     1.2.3 Event Binding using template reference variable       #variable_name
+
+
+2.     Two Way Binding
+  2.1   ngModel     FormsModule(a module in ngModel )     [(ngModel)]="value"
+
+
+
+
+Routing in Angular
+------------------
+
+navigateByUrl   (instead of window.location in JS)    (is a method of class Router)
