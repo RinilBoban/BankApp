@@ -1,0 +1,20 @@
+Data Sharing
+
+Data should be shared from HTML & TS
+html=view
+ts=component
+
+
+The method used to share data= Data Binding
+                               ============
+
+There are many methods in Data Binding
+1.    One Way Binding 
+  1.1   Component to view - from ts file to html
+    1.1.1 String interpolation      {{}} Double curly brackets
+    1.1.2 Property Binding          [property_name]="value"
+
+   1.2  View to Component - from html to ts
+    1.2.1 Event Binding             (event_name)="method_name()"
+    1.2.2 $event binding            (event_name)="method_name($event)"
+    1.2.3 Event Binding using template reference variable       #variable_name
