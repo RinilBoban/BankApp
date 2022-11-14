@@ -7,7 +7,7 @@
             <input [(ngModel)]="acno" type="text" id="acid" name="acno" [placeholder]="data" class="form-control mt-3">
             <input [(ngModel)]="psw" type="text" id="pid" name="psw" type="password" placeholder="Password" class="form-control mt-3">
             <button class="btn btn-primary btn-outline-info mt-3" (click)="login()" type="submit">Log In</button>
-           <br><br>New User?<a href="" class="mb-3">Register</a>
+           <br><br>New User?<a routerLink="register" class="mb-3">Register</a>
         </div>
         <div class="col-4"></div>
     </div>

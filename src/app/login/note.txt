@@ -28,5 +28,16 @@ There are many methods in Data Binding
 
 Routing in Angular
 ------------------
-
 navigateByUrl   (instead of window.location in JS)    (is a method of class Router)
+
+
+Dependency Injection
+--------------------
+To share data between 2 classes
+Inside constructor
+access specifier(public/private) variable:class_name
+
+Angular Services
+----------------
+To store data (redundant data)
+ng g s serviceName
