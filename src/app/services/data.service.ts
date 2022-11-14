@@ -27,4 +27,26 @@ export class DataService {
     }
   }
 
+  login(acno:any,psw:any){
+
+    var userDetails=this.userDetails
+
+    if(acno in userDetails){
+      if(psw==userDetails[acno]['password']){
+        return true
+      }
+      else{
+        alert('Incorrect Password')
+        return false
+      }
+    }
+    else{
+      alert('User not registered')
+      return false
+    }
+
+
+    // alert("login clicked")
+  }
+
 }

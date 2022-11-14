@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
   acno:any
   psw:any
 
-  constructor(private ds:DataService) { }
+  constructor(private ds:DataService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
 
     if(result){
       alert('Registration Successfull')
+      this.router.navigateByUrl('')
     }
     else{
       alert('User already exist')
