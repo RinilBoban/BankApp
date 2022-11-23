@@ -1,0 +1,18 @@
+<div style="border-radius: 40px; background: rgba(57 ,87 ,79 ,0.5)" class="container w-50 p-5 mt-5">
+    <h2 class="text-center text-secondary">Transaction History</h2>
+    <table class="border bg-light w-100 text-center">
+        <thead>
+            <tr class="border border-secondary">
+                <th class="border border-secondary">Type</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of transaction" class="border border-secondary">
+                <td class="border border-secondary">{{i.type}}</td>
+                <td class="border border-secondary">{{i.amount}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

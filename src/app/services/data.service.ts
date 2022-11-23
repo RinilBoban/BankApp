@@ -6,12 +6,13 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
     currectuser:any
+    currentacno:any
   // redundant data
     userDetails:any={
-    1000:{acno:1000, username:"Amal",password:123,balance:0},
-    1001:{acno:1001, username:"Anu",password:123,balance:0},
-    1002:{acno:1002, username:"Arun",password:123,balance:0},
-    1003:{acno:1003, username:"Mega",password:123,balance:0},
+    1000:{acno:1000, username:"Amal",password:123,balance:0,transaction:[]},
+    1001:{acno:1001, username:"Anu",password:123,balance:0,transaction:[]},
+    1002:{acno:1002, username:"Arun",password:123,balance:0,transaction:[]},
+    1003:{acno:1003, username:"Mega",password:123,balance:0,transaction:[]},
   }
 
 
@@ -23,7 +24,7 @@ export class DataService {
       return false
     }
     else{
-      userDetails[acno]={acno,username,password,balance:0}
+      userDetails[acno]={acno,username,password,balance:0,transaction:[]}
       return true
     }
   }
@@ -37,6 +38,7 @@ export class DataService {
 
     if(acno in userDetails){
       if(psw==userDetails[acno]['password']){
+        this.currentacno=acno
         return true
       }
       else{
@@ -57,6 +59,10 @@ export class DataService {
     if(acno in userDetails){
       if(psw==userDetails[acno]['password']){
         userDetails[acno]['balance']+=amount
+
+        //add deposit details in transaction array
+        userDetails[acno]['transaction'].push({type:'Credit',amount})
+
         return userDetails[acno]['balance']
       }
       else{
@@ -77,6 +83,9 @@ export class DataService {
       if(psw1==userDetails[acno1]['password']){
         if(amount<=userDetails[acno1]['balance']){
           userDetails[acno1]['balance']-=amount
+
+          userDetails[acno1]['transaction'].push({type:'Debit',amount})
+
           return userDetails[acno1]['balance']
         }
         else{
@@ -94,4 +103,7 @@ export class DataService {
     }
   }
 
+  getTransaction(acno:any){
+    return this.userDetails[acno]['transaction']
+  }
 }

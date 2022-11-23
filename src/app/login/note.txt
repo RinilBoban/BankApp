@@ -41,3 +41,9 @@ Angular Services
 ----------------
 To store data (redundant data)
 ng g s serviceName
+
+Angular Directives
+------------------
+* is used to denote Angular Directives
+-structural directive - can apply data directly from array / to get data from array
+                      - ngFor  - use instead of forloop. used in HTML file
