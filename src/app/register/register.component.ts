@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -13,25 +14,36 @@ export class RegisterComponent implements OnInit {
   acno:any
   psw:any
 
-  constructor(private ds:DataService,private router:Router) { }
+  constructor(private ds:DataService,private router:Router,private formbuilder:FormBuilder) { }
+
+// create register form model
+registerForm=this.formbuilder.group({
+  uname:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
+  acno:['',[Validators.required,Validators.pattern('[0-9]+')]],
+  psw:['',[Validators.required,Validators.pattern('[0-9]+')]]})
 
   ngOnInit(): void {
   }
 
   register(){
-    var uname=this.uname
-    var acno=this.acno
-    var psw=this.psw
+    var uname=this.registerForm.value.uname
+    var acno=this.registerForm.value.acno
+    var psw=this.registerForm.value.psw
 
-    const result=this.ds.register(acno,uname,psw)
-
-    if(result){
-      alert('Registration Successfull')
-      this.router.navigateByUrl('')
+    if(this.registerForm.valid){
+      const result=this.ds.register(acno,uname,psw)
+      if(result){
+        alert('Registration Successfull')
+        this.router.navigateByUrl('')
+      }
+      else{
+        alert('User already exist')
+      }  
     }
     else{
-      alert('User already exist')
+      alert('Invalid Data entered')
     }
+
   }
 
 }

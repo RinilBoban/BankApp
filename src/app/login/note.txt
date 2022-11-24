@@ -47,3 +47,16 @@ Angular Directives
 * is used to denote Angular Directives
 -structural directive - can apply data directly from array / to get data from array
                       - ngFor  - use instead of forloop. used in HTML file
+
+
+Form Validation in Angular
+--------------------------
+1. Template Driven Form - First create HTML form. Then apply validation.
+2. Model Driven Form - A model is created for form in TS. Then apply validation methods.
+                     - ReactiveFormsModule - module used for model form creation.
+                     - FormBuilder  - class in ReactiveForm for model form creation.
+
+                     a model form contains
+                      - form group
+                      - array
+                      - controller
