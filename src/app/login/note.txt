@@ -45,8 +45,9 @@ ng g s serviceName
 Angular Directives
 ------------------
 * is used to denote Angular Directives
--structural directive - can apply data directly from array / to get data from array
-                      - ngFor  - use instead of forloop. used in HTML file
+-structural directive - can apply data directly from Array or Object/ to get data from array
+                      - ngFor  - use instead of forloop. Used in HTML file
+                      - ngIf   - use instead of IfElse . Used in HTML file
 
 
 Form Validation in Angular
@@ -60,3 +61,15 @@ Form Validation in Angular
                       - form group
                       - array
                       - controller
+
+
+To spot and display error messages while entering form data, use the format given below(Can access the output of input attribute):
+    this.name_of_form.get('uname')?.errors
+
+    If
+    Match the rule :- The output will be an empty response
+    Does not Match the rule :- The output contains a content
+
+
+Local Storage in Angular
+------------------------    
