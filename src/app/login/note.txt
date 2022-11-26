@@ -73,3 +73,8 @@ To spot and display error messages while entering form data, use the format give
 
 Local Storage in Angular
 ------------------------    
+
+-setItem
+-getItem
+-removeItem
+

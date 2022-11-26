@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit {
   amnt1:any
   user:any
 
-  constructor(private ds:DataService) {
+  constructor(private ds:DataService, private router:Router) {
 
     this.user=this.ds.currectuser
     
@@ -49,6 +50,12 @@ export class DashboardComponent implements OnInit {
 
     // alert('Withdraw works')
 
+  }
+
+  logout(){
+    localStorage.removeItem('currentacno')
+    localStorage.removeItem('currentuser')
+    this.router.navigateByUrl('')
   }
 
 }

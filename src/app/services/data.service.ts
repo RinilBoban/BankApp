@@ -16,7 +16,34 @@ export class DataService {
   }
 
 
-  constructor() { }
+  constructor() {
+    this.getData()
+   }
+
+  saveData(){
+    if(this.userDetails){
+      localStorage.setItem('database',JSON.stringify(this.userDetails))
+    }
+    if(this.currectuser){
+      localStorage.setItem('currentuser',JSON.stringify(this.currectuser))
+    }
+    if(this.currentacno){
+      localStorage.setItem('currentacno',JSON.stringify(this.currentacno))
+    }
+  }
+
+  getData(){
+    if(localStorage.getItem('database')){
+      this.userDetails=JSON.parse(localStorage.getItem('database') || '')
+    }
+    if(localStorage.getItem('currentuser')){
+      this.currectuser=JSON.parse(localStorage.getItem('currentuser') || '')
+    }
+    if(localStorage.getItem('currentacno')){
+      this.currentacno=JSON.parse(localStorage.getItem('currentacno') || '')
+    }
+
+  }
 
   register(acno:any,username:any,password:any){
     var userDetails=this.userDetails
@@ -25,6 +52,7 @@ export class DataService {
     }
     else{
       userDetails[acno]={acno,username,password,balance:0,transaction:[]}
+      this.saveData()
       return true
     }
   }
@@ -39,6 +67,7 @@ export class DataService {
     if(acno in userDetails){
       if(psw==userDetails[acno]['password']){
         this.currentacno=acno
+        this.saveData()
         return true
       }
       else{
@@ -62,7 +91,7 @@ export class DataService {
 
         //add deposit details in transaction array
         userDetails[acno]['transaction'].push({type:'Credit',amount})
-
+        this.saveData()
         return userDetails[acno]['balance']
       }
       else{
@@ -85,7 +114,7 @@ export class DataService {
           userDetails[acno1]['balance']-=amount
 
           userDetails[acno1]['transaction'].push({type:'Debit',amount})
-
+          this.saveData()
           return userDetails[acno1]['balance']
         }
         else{

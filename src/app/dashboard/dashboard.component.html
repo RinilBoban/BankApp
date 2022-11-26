@@ -6,6 +6,10 @@
     <a style="text-decoration: none;" routerLink="/transaction">View Transaction History</a>
 </div>
 
+<div class="p-3" style="text-align: end;">
+    <button (click)="logout()" class="btn btn-danger">Log Out</button>
+</div>
+
 <form (ngSubmit)="deposit()">
 <div class="container-fluid w-50 mt-5 p-3" style="background: rgba(57,87,79,0.5); border-radius: 25px;">
     <div class="text-center text-white">
