@@ -10,15 +10,21 @@
     <button (click)="logout()" class="btn btn-danger">Log Out</button>
 </div>
 
-<form (ngSubmit)="deposit()">
+<form [formGroup]="depositForm" (ngSubmit)="deposit()">
 <div class="container-fluid w-50 mt-5 p-3" style="background: rgba(57,87,79,0.5); border-radius: 25px;">
     <div class="text-center text-white">
             <h1>Deposit</h1>
     </div>       
     <div>
-        <input type="text" [(ngModel)]="acno" placeholder="Account Number" id="acid1" name="uname1" class="form-control"><br>
-        <input type="text" [(ngModel)]="psw" placeholder="Password" id="psid1" name="pswd1" class="form-control"><br>
-        <input type="text" [(ngModel)]="amnt" placeholder="Amount" id="amid1" name="amnt1" class="form-control">
+        <input type="text" formControlName="acno" placeholder="Account Number" id="acid1" name="uname1" class="form-control"><br>
+        <div class="text-danger" *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched"><p>Invalid Account Number</p></div>
+        
+        <input type="text" formControlName="psw" placeholder="Password" id="psid1" name="pswd1" class="form-control"><br>
+        <div class="text-danger" *ngIf="this.depositForm.get('psw')?.errors && this.depositForm.get('psw')?.touched"><p>Invalid Password</p></div>
+
+        <input type="text" formControlName="amnt" placeholder="Amount" id="amid1" name="amnt1" class="form-control">
+        <div class="text-danger" *ngIf="this.depositForm.get('amnt')?.errors && this.depositForm.get('amnt')?.touched"><p>Invalid Amount</p></div>
+
     </div>
     <div class="text-center">
         <button type="submit" class="btn btn-outline-light">Deposit</button>
@@ -27,15 +33,21 @@
 </form>
 
 
-<form action="" (ngSubmit)="withdraw()">
+<form action="" [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
     <div class="container form-control w-50 mt-5 p-3" style="background: rgba(57,87,79,0.5); border-radius: 25px;">
         <div class="text-center text-white">
                 <h1>Withdraw</h1>
         </div>       
         <div>
-            <input type="text" [(ngModel)]="acno1" placeholder="Account Number" id="acid" name="uname" class="form-control"><br>
-            <input type="text" [(ngModel)]="psw1" placeholder="Password" id="psid" name="pswd" class="form-control"><br>
-            <input type="text" [(ngModel)]="amnt1" placeholder="Amount" id="amid" name="amnt" class="form-control">
+            <input type="text" formControlName="acno1" placeholder="Account Number" id="acid" name="uname" class="form-control"><br>
+            <div class="text-danger" *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched"><p>Invalid Account Number</p></div>
+
+            <input type="text" formControlName="psw1" placeholder="Password" id="psid" name="pswd" class="form-control"><br>
+            <div class="text-danger" *ngIf="this.withdrawForm.get('psw1')?.errors && this.withdrawForm.get('psw1')?.touched"><p>Invalid Password</p></div>
+
+            <input type="text" formControlName="amnt1" placeholder="Amount" id="amid" name="amnt" class="form-control">
+            <div class="text-danger" *ngIf="this.withdrawForm.get('amnt1')?.errors && this.withdrawForm.get('amnt1')?.touched"><p>Invalid Amount</p></div>
+
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-outline-light">Withdraw</button>
