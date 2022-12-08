@@ -21,6 +21,7 @@ registerForm=this.formbuilder.group({
   uname:['',[Validators.required,Validators.pattern('[a-zA-Z]+')]],
   acno:['',[Validators.required,Validators.pattern('[0-9]+')]],
   psw:['',[Validators.required,Validators.pattern('[0-9]+')]]})
+  // control pass from ts to the html file
 
   ngOnInit(): void {
   }

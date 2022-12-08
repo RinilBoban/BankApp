@@ -37,6 +37,10 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('currentacno')){
+      alert('Please log in again')
+      this.router.navigateByUrl('')
+    }
   }
 
   deposit(){
@@ -69,6 +73,9 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem('currentacno')
     localStorage.removeItem('currentuser')
     this.router.navigateByUrl('')
+  }
+  delete(){
+    alert('Delete clicked')
   }
 
 }

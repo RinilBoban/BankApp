@@ -7,8 +7,13 @@
 </div>
 
 <div class="p-3" style="text-align: end;">
-    <button (click)="logout()" class="btn btn-danger">Log Out</button>
+    <button (click)="logout()" class="btn btn-warning btn btn-outline-danger">Log Out</button>
 </div>
+<div class="p-3" style="text-align: end;">
+    <button (click)="delete()" class="btn btn-danger">Delete</button>
+</div>
+
+<app-delete></app-delete>
 
 <form [formGroup]="depositForm" (ngSubmit)="deposit()">
 <div class="container-fluid w-50 mt-5 p-3" style="background: rgba(57,87,79,0.5); border-radius: 25px;">
