@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   psw1:any
   amnt1:any
   user:any
+  sdate:any
 
   depositForm=this.fb.group({
     acno:['',[Validators.required,Validators.pattern('[0-9]+')]],
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit {
   constructor(private ds:DataService, private router:Router, private fb: FormBuilder) {
 
     this.user=this.ds.currectuser
+    this.sdate= new Date();
     
    }
 
@@ -75,7 +77,11 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('')
   }
   delete(){
-    alert('Delete clicked')
+    // alert('Delete clicked')
+    this.acno=JSON.parse(localStorage.getItem('currentacno')||'');
+  }
+  onCancel(){
+    this.acno="";
   }
 
 }

@@ -1,3 +1,4 @@
+<div class="parent">
 <div class="p-3 text-info">
     <h3>Welcome {{user}}</h3>
 </div> <br>
@@ -5,7 +6,8 @@
 <div style="border-radius: 50px;" class="p-3 bg-white w-25 ms-3 text-center border border-info">
     <a style="text-decoration: none;" routerLink="/transaction">View Transaction History</a>
 </div>
-
+ 
+<h5>System Date and Time: {{sdate| date:'short'}}</h5>
 <div class="p-3" style="text-align: end;">
     <button (click)="logout()" class="btn btn-warning btn btn-outline-danger">Log Out</button>
 </div>
@@ -13,8 +15,9 @@
     <button (click)="delete()" class="btn btn-danger">Delete</button>
 </div>
 
-<app-delete></app-delete>
+<app-delete [item]="acno" (onCancel)="onCancel()"></app-delete>
 
+<div class="child" [ngClass]="acno? 'style1':''">
 <form [formGroup]="depositForm" (ngSubmit)="deposit()">
 <div class="container-fluid w-50 mt-5 p-3" style="background: rgba(57,87,79,0.5); border-radius: 25px;">
     <div class="text-center text-white">
@@ -36,8 +39,9 @@
     </div>
 </div>   
 </form>
+</div>
 
-
+<div class="child" [ngClass]="acno? 'style1':''">
 <form action="" [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
     <div class="container form-control w-50 mt-5 p-3" style="background: rgba(57,87,79,0.5); border-radius: 25px;">
         <div class="text-center text-white">
@@ -59,4 +63,5 @@
         </div>
     </div>   
     </form>
-    
+    </div>
+</div>

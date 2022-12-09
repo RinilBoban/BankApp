@@ -86,3 +86,7 @@ child -> parent communication
 eg: 
 dashboard -> parent
 delete -> child
+
+
+Angular Pipes
+-------------

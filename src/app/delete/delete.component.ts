@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteComponent implements OnInit {
 
+  @Input() item: string|undefined;
+  // input used to hold data from parent component
+
+  @Output() onCancel = new EventEmitter(); 
+    // input used to hold data from child component
+  // onCanel - user defined event
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  cancel(){
+    this.onCancel.emit();
+  }
 }
