@@ -14,6 +14,9 @@ export class DeleteComponent implements OnInit {
     // input used to hold data from child component
   // onCanel - user defined event
 
+  @Output() onDelete = new EventEmitter(); 
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,4 +25,10 @@ export class DeleteComponent implements OnInit {
   cancel(){
     this.onCancel.emit();
   }
+
+  delete(){
+    // alert('delete clicked')
+    this.onDelete.emit(this.item);
+  }
+
 }

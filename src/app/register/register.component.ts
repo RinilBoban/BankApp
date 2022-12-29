@@ -32,19 +32,27 @@ registerForm=this.formbuilder.group({
     var psw=this.registerForm.value.psw
 
     if(this.registerForm.valid){
-      const result=this.ds.register(acno,uname,psw)
-      if(result){
-        alert('Registration Successfull')
+      this.ds.register(acno,uname,psw)
+      .subscribe((result:any)=>{
+        alert(result.message);
         this.router.navigateByUrl('')
-      }
-      else{
-        alert('User already exist')
-      }  
+      })
+
+    //   if(result){
+    //     alert('Registration Successfull')
+    //     this.router.navigateByUrl('')
+    //   }
+    //   else{
+    //     alert('User already exist')
+    //   }  
+    // }
+    // else{
+    //   alert('Invalid Data entered')
+    // }
     }
     else{
-      alert('Invalid Data entered')
+      alert('Invalid form')
     }
-
   }
 
 }

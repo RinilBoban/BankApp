@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { subscribeOn } from 'rxjs';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -22,20 +23,37 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    var acno=this.loginForm.value.acno
-    var psw=this.loginForm.value.psw
     if(this.loginForm.valid){
-      const result=this.ds.login(acno,psw)
-      if(result){
-        alert("Login Success")
+      var acno=this.loginForm.value.acno;
+      var psw=this.loginForm.value.psw;
+      this.ds.login(acno,psw)
+      .subscribe((result:any)=>{
+        localStorage.setItem('currentuser',JSON.stringify(result.currentUser))
+        localStorage.setItem('currentacno',JSON.stringify(result.currentAcno))
+        localStorage.setItem('token',JSON.stringify(result.token))
+        alert(result.message);
         this.router.navigateByUrl('dashboard')
-      }  
+      },
+      result=>{
+        alert(result.error.message)
+      }
+        )
+      }
     }
-    else{
-      alert('Invalid Form')
-    }
-  }
-}
+  } 
+      
+//       if(result){
+//         alert("Login Success")
+//         this.router.navigateByUrl('dashboard')
+//       }  
+//     }
+//     else{
+//       alert('Invalid Form')
+//     }
+//   }
+// }
+
+
   // login(){
   //   var acno=this.acno
   //   var psw=this.psw

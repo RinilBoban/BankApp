@@ -8,12 +8,18 @@ import { DataService } from '../services/data.service';
 })
 export class TransactionComponent implements OnInit {
 
-  useracno:any
+  acno:any
 transaction: any;
 
   constructor(private ds:DataService) {
-    this.useracno=this.ds.currentacno
-    this.transaction=this.ds.getTransaction(this.useracno)
+    this.acno=JSON.parse(localStorage.getItem('currentacno')||'')
+    this.ds.getTransaction(this.acno)
+    .subscribe((result:any)=>{
+      this.transaction=result.transaction
+    },
+    result=>{
+      alert(result.error.message)
+    })
    }
 
   ngOnInit(): void {

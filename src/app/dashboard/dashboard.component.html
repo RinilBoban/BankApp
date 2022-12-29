@@ -15,7 +15,7 @@
     <button (click)="delete()" class="btn btn-danger">Delete</button>
 </div>
 
-<app-delete [item]="acno" (onCancel)="onCancel()"></app-delete>
+<app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)"></app-delete>
 
 <div class="child" [ngClass]="acno? 'style1':''">
 <form [formGroup]="depositForm" (ngSubmit)="deposit()">
@@ -48,14 +48,14 @@
                 <h1>Withdraw</h1>
         </div>       
         <div>
-            <input type="text" formControlName="acno1" placeholder="Account Number" id="acid" name="uname" class="form-control"><br>
-            <div class="text-danger" *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched"><p>Invalid Account Number</p></div>
+            <input type="text" formControlName="acno" placeholder="Account Number" id="acid" name="uname" class="form-control"><br>
+            <div class="text-danger" *ngIf="this.withdrawForm.get('acno')?.errors && this.withdrawForm.get('acno')?.touched"><p>Invalid Account Number</p></div>
 
-            <input type="text" formControlName="psw1" placeholder="Password" id="psid" name="pswd" class="form-control"><br>
-            <div class="text-danger" *ngIf="this.withdrawForm.get('psw1')?.errors && this.withdrawForm.get('psw1')?.touched"><p>Invalid Password</p></div>
+            <input type="text" formControlName="psw" placeholder="Password" id="psid" name="pswd" class="form-control"><br>
+            <div class="text-danger" *ngIf="this.withdrawForm.get('psw')?.errors && this.withdrawForm.get('psw')?.touched"><p>Invalid Password</p></div>
 
-            <input type="text" formControlName="amnt1" placeholder="Amount" id="amid" name="amnt" class="form-control">
-            <div class="text-danger" *ngIf="this.withdrawForm.get('amnt1')?.errors && this.withdrawForm.get('amnt1')?.touched"><p>Invalid Amount</p></div>
+            <input type="text" formControlName="amnt" placeholder="Amount" id="amid" name="amnt" class="form-control">
+            <div class="text-danger" *ngIf="this.withdrawForm.get('amnt')?.errors && this.withdrawForm.get('amnt')?.touched"><p>Invalid Amount</p></div>
 
         </div>
         <div class="text-center">
